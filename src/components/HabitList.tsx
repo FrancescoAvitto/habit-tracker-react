@@ -1,9 +1,18 @@
 import { Button } from "./Button";
 import {eachDayOfInterval, endOfWeek, format, isFuture, startOfWeek} from "date-fns"
 
-export function HabitList() {
+export type Habit = {
+  id: string,
+  name: string
+}
 
-  const habits = [{ id: 'dijg', name: "Drink Water" }, { id: 'dhai1', name: "Exercise" }];
+type HabitListProps = {
+  habits: Habit[]
+}
+
+export function HabitList({habits}: HabitListProps) {
+
+  // const habits = [{ id: 'dijg', name: "Drink Water" }, { id: 'dhai1', name: "Exercise" }];
   
   if(habits.length === 0){
     return <p className="text-zinc-500 text-center py-12">No habits yet. Add one to get started!</p>
@@ -17,10 +26,7 @@ export function HabitList() {
 }
 
 type HabitItemProps = {
-  habit: {
-    id: string,
-    name: string
-  }
+  habit: Habit
 }
 
 function HabitItem({habit}: HabitItemProps){
