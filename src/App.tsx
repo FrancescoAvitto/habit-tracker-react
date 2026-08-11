@@ -18,7 +18,7 @@ export default function App() {
   <HabitProvider>
     <Header visibleDates={visibleDates} onPrev={() => setWeekOffset(o => o - 1)} onNext={() => setWeekOffset(o => o + 1)} />
     <HabitForm/>
-    <HabitList/>
+    <HabitList visibleDates={visibleDates} />
   </HabitProvider>
   </div>;
 }
