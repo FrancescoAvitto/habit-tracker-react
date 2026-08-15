@@ -38,7 +38,7 @@ function HabitItem({habit, visibleDates}: HabitItemProps){
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-3">
           <span className="font-medium">{habit.name}</span>
-          {streak > 0 && (<span className="text-sm text-amber-400">🔥 {streak}</span>)}
+          {/* {streak > 0 && (<span className="text-sm text-amber-400">🔥 {streak}</span>)} */}
           
         </div>
 
