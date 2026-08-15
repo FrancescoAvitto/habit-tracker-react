@@ -31,7 +31,7 @@ type HabitItemProps = {
 function HabitItem({habit, visibleDates}: HabitItemProps){
   const {deleteHabit, toggleHabit} = useHabits();
 
-  const streak = getStreak(habit.completions);
+  // const streak = getStreak(habit.completions);
 
   return <div className="rounded-xl bg-zinc-800 p-4 flex flex-col gap-3">
     <div className="flex items-center justify-between">
@@ -64,13 +64,13 @@ function HabitItem({habit, visibleDates}: HabitItemProps){
   </div>;
 }
 
-function getStreak(completions: Date[]){
-  let streak = 0;
-  let date = new Date();
+// function getStreak(completions: Date[]){
+//   let streak = 0;
+//   let date = new Date();
 
-  while(completions.some(c => isSameDay(c,date))){
-    streak++;
-    date = subDays(date, 1);
-  }
-  return streak;
-}
+//   while(completions.some(c => isSameDay(c,date))){
+//     streak++;
+//     date = subDays(date, 1);
+//   }
+//   return streak;
+// }
