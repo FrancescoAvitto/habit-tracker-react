@@ -1,5 +1,5 @@
 import { Button } from "./Button";
-import { format, isFuture, isSameDay} from "date-fns"
+import { format, isFuture, isSameDay, subDays} from "date-fns"
 import {useHabits, type Habit } from "../context/HabitProvider";
 
 type HabitListProps = {
@@ -31,14 +31,14 @@ type HabitItemProps = {
 function HabitItem({habit, visibleDates}: HabitItemProps){
   const {deleteHabit, toggleHabit} = useHabits();
 
-  // const streak = getStreak(habit.completions);
+  const streak = getStreak(habit.completions);
 
   return <div className="rounded-xl bg-zinc-800 p-4 flex flex-col gap-3">
     <div className="flex items-center justify-between">
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-3">
           <span className="font-medium">{habit.name}</span>
-          {/* {streak > 0 && (<span className="text-sm text-amber-400">🔥 {streak}</span>)} */}
+          {streak > 0 && (<span className="text-sm text-amber-400">🔥 {streak}</span>)}
           
         </div>
 
@@ -64,13 +64,13 @@ function HabitItem({habit, visibleDates}: HabitItemProps){
   </div>;
 }
 
-// function getStreak(completions: Date[]){
-//   let streak = 0;
-//   let date = new Date();
+function getStreak(completions: Date[]){
+  let streak = 0;
+  let date = new Date();
 
-//   while(completions.some(c => isSameDay(c,date))){
-//     streak++;
-//     date = subDays(date, 1);
-//   }
-//   return streak;
-// }
+  while(completions.some(c => isSameDay(c,date))){
+    streak++;
+    date = subDays(date, 1);
+  }
+  return streak;
+}
